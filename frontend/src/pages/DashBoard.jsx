@@ -60,6 +60,10 @@ class DashBoard extends Component{
         const {navigate}=this.props
         navigate("/teams")
     }
+    logOut=()=>{
+         const {navigate}=this.props
+        navigate("/register")
+    }
     render(){
         const {orgId,userId,orgName,userName,email}=this.state
         return (<div className="dashboard-container">
@@ -73,6 +77,7 @@ class DashBoard extends Component{
                     </div>
                 </div>
                 <div className="id-container">
+                    <button className="btn btn-outline-danger" onClick={this.logOut}>Logout</button>
                     <p>User Id: {userId}</p>
                     <p>Organisation Id: {orgId}</p>
                 </div>
