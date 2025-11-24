@@ -1,0 +1,91 @@
+.employee-form-container{
+    display: flex;
+    background-color: #F5F5F5;
+    height: 100vh;
+    padding: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-employee-form{
+    width: 80%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.header-employee-text{
+    color: #000000;
+    text-align: center;
+    font-weight: bold;
+}
+
+.employee-join-text{
+     color: #000000;
+     text-align: center;
+     font-size: 20px;
+     margin-top: 10px;
+}
+
+.employee-text-box{
+     width: 350px;           
+    height: 35px;            
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #E3EDF9;
+    margin-left: 0px;
+}
+
+.form-employee-registration{
+    display: flex;
+    flex-direction: column;
+}
+
+.label-employee-name{
+    color: #253D90;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 8px;
+    margin-top: 10px;
+}
+
+.success-msg{
+    background-color: #3F861E;
+    color: #FFFFFF;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.failure-msg{
+    background-color:#FF0000;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+.back-button{
+    align-self: flex-start;
+    margin-left: 100px;
+}
+
+.employee-textarea{
+     width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+   
+    outline: none;
+    
+}
+.employee-textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+.error-handle{
+    height: 30px;
+}

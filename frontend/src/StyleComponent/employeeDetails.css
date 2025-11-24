@@ -1,0 +1,89 @@
+.employee-details-container{
+  
+    background-color: #F5F5F5;
+    padding: 30px;
+}
+
+.employee-maintain{
+    display: flex;
+    flex-direction: column;
+    padding:40px;
+    background-color: #FFFFFF;
+}
+
+.profile-pic{
+    align-self: flex-start;
+    width: 220px;
+    height: 220px;
+    margin-top: 0px;
+}
+
+.edit-btn{
+    width: 56px;
+    height: 52px;
+}
+
+.img-container{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.edit-text{
+    font-size: 24px;
+    font-weight: 500;
+    
+}
+
+.edit-custom-btn{
+    background-color: transparent;
+    border: none;
+}
+
+.profile-details{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.employee-details{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.employee-text-box{
+     width: 350px;           
+    height: 35px;            
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #E3EDF9;
+    margin-left: 0px;
+}
+
+.employee-drop-box {
+    width: 100%;
+    max-width: 300px; 
+    padding: 8px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.employee-drop-box:focus {
+    border-color: #3f51b5; 
+}
+
+.update-btn{
+    align-self: flex-end;
+}
+
+.error-msg{
+    color: #ff0f0f;
+    margin-top: 8px;
+}

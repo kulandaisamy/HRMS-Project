@@ -1,0 +1,12 @@
+.employee-management-container{
+    
+    background-color: #F5F5F5;
+    padding: 30px;
+}
+
+.employee-management-table{
+    background-color: #FFFFFF;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}

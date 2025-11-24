@@ -1,0 +1,10 @@
+.list-team-container{
+ 
+    background-color: #F5F5F5;
+    padding: 20px;
+}
+
+.list-container{
+    display: flex;
+    flex-direction: column;
+}

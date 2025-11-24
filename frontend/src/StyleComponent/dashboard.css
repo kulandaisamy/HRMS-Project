@@ -1,0 +1,66 @@
+.dashboard-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.display-profile{
+    background-color: #193288;
+    padding: 30px;
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profilr-pic{
+    height: 100px;
+    width: 100px;
+}
+
+.profilr-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.align-profile-details{
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    margin-left: 20px;
+}
+
+.organization-name-text{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.id-container{
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.tab-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px;
+    height: 100%;
+}
+
+.create-button-employee{
+    height:25%;
+    width: 40%;
+    background-color: transparent;
+    margin: 20px;
+  
+}
+.create-button-employee:hover {
+  
+    cursor: pointer;
+    transform: scale(1.02); 
+}
