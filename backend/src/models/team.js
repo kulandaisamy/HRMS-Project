@@ -1,0 +1,28 @@
+const db=require("../db")
+
+exports.createTeamsData=async (orgId,name,description)=>{
+     const checkDuplicateQuery = "SELECT * FROM teams WHERE organisation_id = ? AND name = ?";
+        const [existingTeam] = await db.query(checkDuplicateQuery, [orgId, name]);
+        const insertTeam="INSERT INTO teams (organisation_id,name,description) VALUES (?,?,?)"
+        const [insertTeamResult]=await db.query(insertTeam,[orgId,name,description])
+        return {
+            existingTeam,insertTeamResult
+        }
+}
+
+exports.listTeamData=async (orgId)=>{
+    const getTeamQuery="SELECT * FROM teams where organisation_id=?"
+    const [getTeamResult]=await db.query(getTeamQuery,[orgId])
+    return getTeamResult
+}
+
+exports.updateTeamsData=async (name, description, id, orgId)=>{
+    const oldQuery="select * from teams where id=? and organisation_id=?"
+    const [oldQueryResult]=await db.query(oldQuery,[id,orgId])
+       
+
+    const updateQuery = "UPDATE teams SET name=?, description=? WHERE id=? AND organisation_id=?";
+    await db.query(updateQuery, [name, description, id, orgId]);
+    return oldQueryResult
+}
+
