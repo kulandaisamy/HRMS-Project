@@ -11,7 +11,7 @@ app.use(cors({
 }));
 const authRouter=require("./routes/auth")
 const empRouter=require("./routes/employees")
-const teamRouter=require("./controllers/teamController")
+const teamRouter=require("./routes/teams")
 app.use("/api/auth",authRouter)
 app.use("/api/employees",empRouter)
 

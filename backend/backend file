@@ -1,8 +1,0 @@
-let db
-
-
-//display
-//"/logout", authMiddleware, 
-// logout
-
-module.exports=app

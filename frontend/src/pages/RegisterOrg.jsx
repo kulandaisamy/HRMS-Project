@@ -106,7 +106,7 @@ class RegisterOrg extends Component{
                         <label className="label-org-name" htmlFor="adminName">Admin Name</label>
                         <input type="text" className="text-box" id="adminName" onChange={this.getAdminName} value={adminName}/>
                         <label className="label-org-name" htmlFor="email">Email</label>
-                        <input type="text" id="email" className="text-box" onChange={this.getEmail} value={email}/>
+                        <input type="email" id="email" className="text-box" onChange={this.getEmail} value={email}/>
                         <label className="label-org-name" htmlFor="password">Password</label>
                         <input type="password" id="password" className="text-box" onChange={this.getPassword} value={password}/>
                         <div>
