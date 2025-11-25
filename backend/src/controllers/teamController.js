@@ -1,5 +1,6 @@
 const addLog=require("../models/log")
-const {createTeamsData,listTeamData,updateTeamsData}=require("../models/team")
+const {createTeamsData,listTeamData,updateTeamsData,deleteTeamData,deleteTeamAssignmentData,createTeamAssignmentData}=require("../models/team")
+const {displayLogData}=require("../models/log")
 
 exports.createTeams=async (request,response)=>{
     const {orgId,userId}=request.user
@@ -58,19 +59,14 @@ exports.updateTeams=async (request,response)=>{
     response.send({ message: "Team updated successfully" });
 }
 
-//deleting team.
-app.delete("/api/teams/:id",authMiddleware,async (request,response)=>{
+
+exports.deleteTeam=async (request,response)=>{
     const {id}=request.params
     const {orgId,userId}=request.user
-    const oldQuery="select * from teams where id=? and organisation_id=?"
-    const [oldQueryResult]=await db.query(oldQuery,[id,orgId])
-        if (oldQueryResult.length === 0) {
+    const oldQueryResult=await deleteTeamData(id, orgId)
+     if (oldQueryResult.length === 0) {
         return response.status(404).send({ message: "Team not found" });
     }
-    const deleteQuery="DELETE FROM teams where id=? and organisation_id=?"
-    await db.query(deleteQuery,[id,orgId])
-
-
     const action="team_deleted"
     const meta={
         team_id: id,
@@ -84,4 +80,60 @@ app.delete("/api/teams/:id",authMiddleware,async (request,response)=>{
     response.send({
         message:"Team deleted successfully"
     })
-})
+}
+
+exports.deleteTeamAssignment=async (request,response)=>{
+    const {teamId}=request.params
+    const {orgId,userId}=request.user
+    const {employeeId}=request.body
+    
+     if (!employeeId) {
+      return res.status(400).send({ message: "No employee IDs provided" });
+    }
+   await deleteTeamAssignmentData(teamId,employeeId)
+  
+  const action = "unassigned_employee_from_team";
+  const meta = {
+    employeeId,
+    teamId,
+  };
+    await addLog(orgId, userId, action, meta);
+
+  response.send({
+    message: "Employees unassigned from team successfully",
+    unassignedEmployees:employeeId,
+  });
+}
+
+
+exports.createTeamAssignment=async (request,response)=>{
+    const {orgId,userId}=request.user
+    const {teamId}=request.params
+    const {employeeId}=request.body
+    
+       if (!employeeId) {
+      return response.status(400).send({ message: "No employee ID provided" });
+    }
+  
+    await createTeamAssignmentData(employeeId,teamId)
+    const action="assigned_employee_to_team"
+    const meta={
+        employee_id:employeeId,
+        team_id:teamId
+    }
+    await addLog(orgId,userId,action,meta)
+      response.send({
+      message: "Employees assigned to team successfully",
+      assignedEmployee: employeeId,
+    });
+}
+
+
+exports.displayLogs=async (request, response) => {
+    const { orgId } = request.user;
+    const { userId, action, startDate, endDate } = request.query;
+
+    const logsResult = await displayLogData(orgId,userId, action, startDate, endDate);
+    response.send({ logs: logsResult });
+};
+

@@ -26,3 +26,11 @@ exports.updateTeamsData=async (name, description, id, orgId)=>{
     return oldQueryResult
 }
 
+exports.deleteTeamData=async (id, orgId)=>{
+    const oldQuery="select * from teams where id=? and organisation_id=?"
+    const [oldQueryResult]=await db.query(oldQuery,[id,orgId])
+       
+    const deleteQuery="DELETE FROM teams where id=? and organisation_id=?"
+    await db.query(deleteQuery,[id,orgId])
+    return oldQueryResult
+}

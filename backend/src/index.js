@@ -14,7 +14,8 @@ const empRouter=require("./routes/employees")
 const teamRouter=require("./controllers/teamController")
 app.use("/api/auth",authRouter)
 app.use("/api/employees",empRouter)
-app.use("/api/teams",teamRouter)
+
+app.use("/api",teamRouter)
 
 
 const initialize=()=>{
