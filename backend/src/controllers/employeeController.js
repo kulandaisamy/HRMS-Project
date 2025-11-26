@@ -21,7 +21,7 @@ exports.createEmployees=async (request,response)=>{
 
 exports.listEmployee=async (request,response)=>{
     const {orgId}=request.user
-    const employees=showEmployees(orgId)
+    const employees=await showEmployees(orgId)
     response.send({employees:employees})
 }
 

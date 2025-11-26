@@ -2,8 +2,8 @@ const db=require("../db")
 const bcrypt=require("bcrypt")
 const jwt = require('jsonwebtoken');
 const {addLog}=require("../models/log")
-const {createOrganisation}=require("../models/organisation")
-const {userLogin}=require("../models/organisation")
+const {createOrganisation,checkOrganisation}=require("../models/organisation")
+const {userLogin}=require("../models/user")
 
 const generateJwtToken=async (payload)=>{
     return jwt.sign(payload,process.env.JWT_SECRET,{ expiresIn:'8h' })
@@ -13,21 +13,20 @@ exports.register=async (request,response)=>{
     try{
            const {orgName, adminName, email, password}=request.body
            console.log("Request body:", request.body);
+
             if (!orgName || !adminName || !email || !password) {
-      return res.status(400).send("All fields are required");
+      return response.status(400).send("All fields are required");
     }
-    const result=await createOrganisation(orgName, adminName, email, password)
-    const existingUser=result.existingUser
-    const existingOrg=result.existingOrg
-    const orgInsertResult=result.orgInsertResult
-    const userInsertion=result.userInsertion
-    const org_id=result.org_id
+   const checkResult=await checkOrganisation(orgName,email)
+    const existingUser=checkResult.existingUser
+    const existingOrg=checkResult.existingOrg
+   
     if (existingUser.length > 0) return response.status(400).send("Email already exists");
     if (existingOrg.length > 0) return response.status(400).send("Organisation already exists");
+     const result=await createOrganisation(orgName, adminName, email, password)
     
-   
-    console.log("Org insert result:", orgInsertResult);
-    console.log("User insert result:", userInsertion);
+    const userInsertion=result.userInsertion
+    const org_id=result.org_id
     const user_id=userInsertion.insertId
     const action="org_register"
     const meta={

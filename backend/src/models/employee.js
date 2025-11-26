@@ -29,7 +29,7 @@ exports.deleteEmployeeData=async (id,orgId)=>{
     return oldQueryResult
 }
 
-exports.specificEmployeeData=async ()=>{
+exports.specificEmployeeData=async (id,orgId)=>{
      const getQuery=`
         SELECT 
             employees.id,employees.organisation_id, employees.first_name, employees.last_name, employees.email, employees.phone, employees.created_at,

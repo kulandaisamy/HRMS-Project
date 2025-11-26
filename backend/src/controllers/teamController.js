@@ -1,5 +1,6 @@
-const addLog=require("../models/log")
-const {createTeamsData,listTeamData,updateTeamsData,deleteTeamData,deleteTeamAssignmentData,createTeamAssignmentData}=require("../models/team")
+const {addLog}=require("../models/log")
+const {createTeamsData,listTeamData,updateTeamsData,deleteTeamData,checkDuplicateTeam}=require("../models/team")
+const {createTeamAssignmentData,deleteTeamAssignmentData}=require("../models/employeeTeam")
 const {displayLogData}=require("../models/log")
 
 exports.createTeams=async (request,response)=>{
@@ -8,12 +9,15 @@ exports.createTeams=async (request,response)=>{
     if (!name || name.trim() === "") {
     return response.status(400).send({ message: "Team name is required" });
 }
-        const result=await createTeamsData(orgId, name,description)
-        const existingTeam=result.existingTeam
-        const insertTeamResult=result.insertTeamResult
+       
+        const existingTeam=await checkDuplicateTeam(orgId,name)
+       
+       
        if (existingTeam.length > 0) {
             return response.status(400).send({ message: "Team name already exists" });
         }
+         const result=await createTeamsData(orgId, name,description)
+         const insertTeamResult=result.insertTeamResult
     const action="team_created"
     const org_id=orgId
     const user_id=userId
@@ -22,7 +26,7 @@ exports.createTeams=async (request,response)=>{
         name,
         description
     }
-    addLog(org_id,user_id,action,meta)
+    await addLog(org_id,user_id,action,meta)
     response.send({ message: "Team created successfully"})
 }
 
