@@ -61,6 +61,7 @@ class DashBoard extends Component{
         navigate("/teams")
     }
     logOut=()=>{
+        localStorage.removeItem("token")
          const {navigate}=this.props
         navigate("/register")
     }
