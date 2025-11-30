@@ -52,6 +52,25 @@
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    width: 250px;
+}
+
+.employee-element p:first-child {
+    font-weight: 600;
+    width: 130px;
+}
+.employee-element p:last-child {
+    flex: 1;
+    margin-left: 20px;
+}
+.output-element{
+    margin-left: 30px;
+}
+
+.employee-element {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
 }
 
 .employee-text-box{

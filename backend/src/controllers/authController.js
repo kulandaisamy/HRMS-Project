@@ -94,7 +94,7 @@ exports.logout=async (request, response) => {
 
     const action = "user_logout";
     const meta = { user_id: userId,org_id:orgId };
-
+    
     await addLog(orgId, userId, action, meta);
 
     response.send({ message: "User logged out successfully" });

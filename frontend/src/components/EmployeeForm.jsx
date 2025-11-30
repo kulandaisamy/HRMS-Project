@@ -2,6 +2,7 @@ import {Component} from "react"
 import api from "../services/api.js"
 import { withRouter } from "../Navigator/withRouter.js"
 import "../StyleComponent/employeeform.css"
+import Header from "./Header.jsx"
 
 class EmployeeForm extends Component{
     state={
@@ -127,7 +128,10 @@ class EmployeeForm extends Component{
     render(){
         const {firstName,lastName,email,phone,successMessage,error,listTeam,assignTeam,assignTeamError,teamId}=this.state
         return (
+            <div>
+                  <Header/>
             <div className="employee-form-container">
+              
                 <div className="create-employee-form">
                     <button type="button" className="btn btn-secondary back-button" onClick={this.goBack}><mark>Back</mark></button>
                     <h1 className="header-employee-text">Register a New Employee</h1>
@@ -161,6 +165,7 @@ class EmployeeForm extends Component{
                 </div>
                 
 
+            </div>
             </div>
         )
     }

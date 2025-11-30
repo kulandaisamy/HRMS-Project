@@ -2,6 +2,7 @@ import {Component} from "react"
 import api from "../services/api"
 import { withRouter } from "../Navigator/withRouter"
 import "../StyleComponent/listTeam.css"
+import Header from "../components/Header"
 
 class Teams extends Component{
     state={
@@ -93,9 +94,13 @@ class Teams extends Component{
 }
     render(){
         const {updateTeamLogs,message,isEdit}=this.state
-        return (<div className="list-team-container">
+        return (
+            <div>
+                <Header/>
+        <div className="list-team-container">
         
             <button type="button" className="btn btn-primary mb-4" onClick={this.goHomePage}>Home Page</button>
+            
             {message && <p>{message}</p>}
             <div className="list-container">
                  <h1>List team</h1>
@@ -136,6 +141,7 @@ class Teams extends Component{
                  </table>
             </div>
            
+        </div>
         </div>)
     }
 }

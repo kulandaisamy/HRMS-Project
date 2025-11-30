@@ -6,6 +6,18 @@
 .logs-entry-container{
     padding: 20px;
     background-color: #FFFFFF;
-    
+}
+
+.filter-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+     gap: 15px; 
+    margin-bottom: 20px;
+}
+
+.filter-container p{
+    margin: 0px;
+    padding: 0px;
 }
 

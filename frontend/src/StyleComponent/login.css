@@ -75,3 +75,8 @@
     color: #ff0f0f;
     margin-top: 8px;
 }
+
+.need-acc{
+    align-self: flex-start;
+    margin-top: 10px;
+}

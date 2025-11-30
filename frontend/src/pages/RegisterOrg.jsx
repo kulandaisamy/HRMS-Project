@@ -1,5 +1,5 @@
 import {Component} from "react"
-
+import {Link} from "react-router-dom"
 import api from "../services/api.js"
 import "../StyleComponent/register.css"
 import { withRouter } from "../Navigator/withRouter.js"
@@ -82,10 +82,7 @@ class RegisterOrg extends Component{
             })
 
     }
-    loginPage=()=>{
-        const {navigate}=this.props
-        navigate("/login")
-    }
+ 
     render(){
         const {error, orgName,adminName,email,password}=this.state
         return (
@@ -97,7 +94,7 @@ class RegisterOrg extends Component{
                      </div>
                 </div>
                 <div className="register-form-container">
-                    <button type="button" className="btn btn-primary mt-4 w-50" onClick={this.loginPage}>LogIn</button>
+
                     <h1 className="org-title">Welcome to HRMS</h1>
                     <p className="registration-txt">Register your account</p>
                     <form className="register-form" onSubmit={this.sendData}>
@@ -109,10 +106,8 @@ class RegisterOrg extends Component{
                         <input type="email" id="email" className="text-box" onChange={this.getEmail} value={email}/>
                         <label className="label-org-name" htmlFor="password">Password</label>
                         <input type="password" id="password" className="text-box" onChange={this.getPassword} value={password}/>
-                        <div>
-                            <button type="submit" className="btn btn-primary mt-4 w-50">Register</button>
-                            
-                        </div>
+                        <button type="submit" className="btn btn-primary mt-4 w-50">Register</button> 
+                        <p className="login-page">Already have an Account? <Link to="/login" className="link-login">Log in</Link></p>
                         
                         {error && <p className="error-msg">{error}</p>}
                     </form>

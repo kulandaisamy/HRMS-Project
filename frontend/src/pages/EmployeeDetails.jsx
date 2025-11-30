@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import Header from "../components/Header";
 import api from "../services/api";
 import { withRouter } from "../Navigator/withRouter";
 import "../StyleComponent/employeeDetails.css"
@@ -102,8 +102,11 @@ class EmployeeDetails extends Component{
     render(){
         const {firstName,lastName,email,phone,teamName,isEdit,message,deleteMessage}=this.state
         return (
+            <div>
+                <Header/>
         <div className="employee-details-container">
             <button className="btn btn-primary mb-4" onClick={this.homePage}>Home Page</button>
+
             <div className="employee-maintain">
                <div className="img-container">
                 <div className="profile-details">
@@ -114,15 +117,28 @@ class EmployeeDetails extends Component{
                         <p>Last Name: <input value={lastName} type="text" className="employee-text-box" onChange={this.changeLasttName}/></p>
                         <p>Email: <input value={email} type="email" className="employee-text-box" onChange={this.changeEmail}/></p>
                         <p>Phone: <input value={phone} type="text" className="employee-text-box" onChange={this.changePhone}/></p>
-                         <p>Team: {teamName}</p>
+                         <p>Team: {teamName ? teamName : "NA"}</p>
                         <button className="btn btn-success update-btn" type="submit">Update</button>
                     </form> :    
                     <form className="employee-details" onSubmit={this.deleteEmployee}>
-                        <p>First Name:{firstName}</p>
-                        <p>Last Name: {lastName}</p>
-                        <p>Email: {email}</p>
-                        <p>Phone: {phone}</p>
-                        <p>Team: {teamName}</p>
+                        <div className="employee-element">
+                              <p>First Name:</p>
+                        <p className="output-element">{firstName}</p>
+                        </div>
+                       <div className="employee-element">
+                             <p>Last Name:</p><p className="output-element"> {lastName}</p>
+                       </div>
+                       <div className="employee-element">
+                            <p>Email: </p><p className="output-element">{email}</p>
+                       </div>
+                        <div className="employee-element">
+                              <p>Phone:</p><p className="output-element"> {phone}</p>
+                        </div>
+                       <div className="employee-element">
+                             <p>Team:</p>
+                             <p className="output-element">{teamName ? teamName : "NA"}</p>
+                       </div>
+                       
                         <button type="submit" className="btn btn-danger delete-btn">Delete</button>
                     </form>
                     }
@@ -140,6 +156,7 @@ class EmployeeDetails extends Component{
             {deleteMessage && <p className="error-msg">{deleteMessage}</p>}
             {message && <p className="text-success">{message}</p>}
          
+        </div>
         </div>)
     }
 }

@@ -98,7 +98,7 @@ exports.deleteTeamAssignment=async (request,response)=>{
   
   const action = "unassigned_employee_from_team";
   const meta = {
-    employeeId,
+    employee_id:employeeId,
     teamId,
   };
     await addLog(orgId, userId, action, meta);
@@ -135,9 +135,9 @@ exports.createTeamAssignment=async (request,response)=>{
 
 exports.displayLogs=async (request, response) => {
     const { orgId } = request.user;
-    const { userId, action, startDate, endDate } = request.query;
+    const { empId, action, startDate, endDate } = request.query;
 
-    const logsResult = await displayLogData(orgId,userId, action, startDate, endDate);
+    const logsResult = await displayLogData(orgId,empId, action, startDate, endDate);
     response.send({ logs: logsResult });
 };
 

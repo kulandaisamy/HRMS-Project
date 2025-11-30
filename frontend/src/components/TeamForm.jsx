@@ -2,6 +2,7 @@ import {Component} from "react"
 import api from "../services/api"
 import "../StyleComponent/employeeform.css"
 import { withRouter } from "../Navigator/withRouter"
+import Header from "./Header"
 
 class TeamForm extends Component{
     state={
@@ -73,13 +74,15 @@ class TeamForm extends Component{
     render(){
         const {name,description,successMessage,error}=this.state
         return (
+            <div>
+                 <Header/>
             <div className="employee-form-container">
+               
                 <div className="create-employee-form">
                     <button type="button" className="btn btn-secondary back-button" onClick={this.goBack}><mark>Back</mark></button>
                     <h1 className="header-employee-text">Create a New Team</h1>
                     <p className="employee-join-text">Fill the required field below to create a new team</p>
                     <form className="form-employee-registration" onSubmit={this.submitTeamForm}>
-                        
                         <label className="label-employee-name" htmlFor="team-name">Team Name</label>
                         <input type="text" className="employee-text-box" id="team-name" onChange={this.getTeamName} value={name}/>
                         
@@ -96,12 +99,10 @@ class TeamForm extends Component{
                          <p>{successMessage && <span className="success-msg">{successMessage}</span>}</p>
                     <p>{error && <span className="failure-msg">{error}</span>}</p>
                     </div>
-                   
-             
-                
-
             </div>
-        </div>)
+        </div>
+        </div>
+        )
     }
 }
 

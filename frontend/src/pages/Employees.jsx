@@ -2,6 +2,7 @@ import {Component} from "react"
 import api from "../services/api"
 import "../StyleComponent/empManagement.css"
 import { withRouter } from "../Navigator/withRouter"
+import Header from "../components/Header"
 
 
 class Employees extends Component{
@@ -50,7 +51,11 @@ class Employees extends Component{
     render(){
         const {updateListEmployees}=this.state
         console.log(updateListEmployees)
-        return (<div className="employee-management-container">
+        return (
+            <div>
+                 <Header/>
+        <div className="employee-management-container">
+           
             <div className="employee-management-table">
                  <h1>Employee Management</h1>
                  <table className="table table-striped">
@@ -87,7 +92,9 @@ class Employees extends Component{
                  </table>
             </div>
            <button type="button" className="btn btn-primary mt-4" onClick={this.goToHome}>Home Page</button>
-        </div>)
+        </div>
+        </div>
+        )
     }
 }
 

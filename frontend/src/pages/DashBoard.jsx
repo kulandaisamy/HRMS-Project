@@ -2,6 +2,7 @@ import {Component} from "react"
 import api from "../services/api.js"
 import "../StyleComponent/dashboard.css"
 import { withRouter } from "../Navigator/withRouter.js"
+import Header from "../components/Header.jsx"
 
 class DashBoard extends Component{
     state={
@@ -60,14 +61,11 @@ class DashBoard extends Component{
         const {navigate}=this.props
         navigate("/teams")
     }
-    logOut=()=>{
-        localStorage.removeItem("token")
-         const {navigate}=this.props
-        navigate("/register")
-    }
+  
     render(){
         const {orgId,userId,orgName,userName,email}=this.state
         return (<div className="dashboard-container">
+            <Header/>
             <div className="display-profile">
                 <div className="profilr-container">
                     <img src="https://res.cloudinary.com/dhlbduxoj/image/upload/v1763874412/Group_31_pu621q.png" className="profilr-pic" alt="profile-picture"/>
@@ -78,7 +76,7 @@ class DashBoard extends Component{
                     </div>
                 </div>
                 <div className="id-container">
-                    <button className="btn btn-outline-danger" onClick={this.logOut}>Logout</button>
+                    
                     <p>User Id: {userId}</p>
                     <p>Organisation Id: {orgId}</p>
                 </div>

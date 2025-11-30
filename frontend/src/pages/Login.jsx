@@ -2,6 +2,7 @@ import {Component} from "react"
 import { withRouter } from "../Navigator/withRouter.js"
 import api from "../services/api.js"
 import "../StyleComponent/login.css"
+import {Link} from "react-router-dom"
 
 class Login extends Component{
     state={
@@ -87,6 +88,7 @@ class Login extends Component{
                     <input className="text-box" type="password" id="password" value={password} onChange={this.getPassword}/>
                     <button className="btn btn-primary mt-4 w-100">Login</button>
                 </form>
+                <p className="need-acc">Need an Account <Link to="/register" className="link-login">Sign Up</Link></p>
                 {error && <p className="error-msg">{error}</p>}
             </div>
             <div className="bg-image-container">
