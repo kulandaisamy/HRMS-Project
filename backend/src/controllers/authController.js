@@ -66,12 +66,12 @@ if(emailResult.length===0){
 }
 else{
     const org_id=orgResult[0].id
-const user_id=emailResult[0].id
-const action="user_login"
-const meta={
-    org_name:orgName,
-    email
-}
+    const user_id=emailResult[0].id
+    const action="user_login"
+    const meta={
+        org_name:orgName,
+        email
+    }
     const isPassword=await bcrypt.compare(password,emailResult[0].password_hash)
     if(isPassword){
         await addLog(org_id,user_id,action,meta) 

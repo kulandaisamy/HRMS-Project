@@ -6,7 +6,7 @@ const Header=(props)=>{
 
       const logOut=async ()=>{
         try{
-        const response=await api.post("/logout", {}, { withCredentials: true })
+        const response=await api.post("/auth/logout", {}, { withCredentials: true })
         if(response.data){
         localStorage.removeItem("token")
          const {navigate}=props
